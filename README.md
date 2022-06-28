@@ -25,10 +25,6 @@ GRANT ALL PRIVILEGES ON application.* TO 'application'@'%' IDENTIFIED BY '${KITM
 FLUSH PRIVILEGES;
 ```
 
-Database schema:
-
-![db](https://github.com/votuscode/kitm-application/blob/develop/backend/src/main/resources/database/schema.png?raw=true)
-
 ## Application configuration
 
 Application secrets are located in the `backend/src/main/resources/config` folder as `application-secrets.properties`
