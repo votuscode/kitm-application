@@ -35,7 +35,7 @@ export class HomeView {
           description: restaurant.description || 'No description',
           image: restaurant.image || GENERIC_RESTAURANT,
           context: [restaurant.name, restaurant.description].join(''),
-          link: `/books/${restaurant.id}`,
+          link: `/restaurant/${restaurant.id}`,
           ordered: false,
         };
       });

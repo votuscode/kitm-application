@@ -20,7 +20,7 @@ const GENERIC_MENU = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD//gApVGF
   `,
   changeDetection,
 })
-export class BookView {
+export class RestaurantView {
 
   readonly search$ = new BehaviorSubject<string>('');
 

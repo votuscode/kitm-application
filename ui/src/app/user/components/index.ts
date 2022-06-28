@@ -1,6 +1,6 @@
 import {HomeView} from './home/home.view';
-import {BookView} from './book/book.view';
+import {RestaurantView} from './menu/restaurant.view';
 
-export const components = [HomeView, BookView];
+export const components = [HomeView, RestaurantView];
 
-export {HomeView, BookView};
+export {HomeView, RestaurantView};
