@@ -1,8 +1,6 @@
 package com.kitm.application.backend.domain.user;
 
-import com.kitm.application.backend.domain.order.OrderEntity;
 import com.kitm.application.backend.domain.role.RoleEntity;
-import com.kitm.application.backend.domain.wish.WishEntity;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -11,7 +9,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.*;
+import java.util.Collection;
+import java.util.Date;
+import java.util.UUID;
 
 /**
  * @author votuscode (https://github.com/votuscode)
@@ -45,12 +45,6 @@ public class UserEntity implements Serializable, UserDetails {
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<RoleEntity> roles;
-
-    @OneToMany(mappedBy = "userEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<OrderEntity> orderEntitySet = new HashSet<>();
-
-    @OneToMany(mappedBy = "userEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<WishEntity> wishEntitySet = new HashSet<>();
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)

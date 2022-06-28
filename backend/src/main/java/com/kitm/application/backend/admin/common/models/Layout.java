@@ -27,10 +27,7 @@ public class Layout {
     Home("Home", "/admin"),
     Users("Edit users", "/admin/users"),
     Restaurants("Edit restaurants", "/admin/restaurants"),
-    Menus("Edit menus", "/admin/menus"),
-    Authors("Edit authors", "/admin/authors"),
-    Categories("Edit categories", "/admin/categories"),
-    Books("Edit books", "/admin/books");
+    Menus("Edit menus", "/admin/menus");
 
     public String label;
     public String href;
