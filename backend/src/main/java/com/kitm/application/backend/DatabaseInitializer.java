@@ -7,6 +7,7 @@ import com.kitm.application.api.book.dto.BookDto;
 import com.kitm.application.api.book.dto.UpsertBookDto;
 import com.kitm.application.api.category.dto.CategoryDto;
 import com.kitm.application.api.category.dto.UpsertCategoryDto;
+import com.kitm.application.api.menu.dto.UpsertMenuDto;
 import com.kitm.application.api.order.dto.CreateOrderDto;
 import com.kitm.application.api.restaurant.dto.RestaurantDto;
 import com.kitm.application.api.restaurant.dto.UpsertRestaurantDto;
@@ -17,6 +18,7 @@ import com.kitm.application.api.user.dto.UserDto;
 import com.kitm.application.backend.domain.author.AuthorService;
 import com.kitm.application.backend.domain.book.BookService;
 import com.kitm.application.backend.domain.category.CategoryService;
+import com.kitm.application.backend.domain.menu.MenuService;
 import com.kitm.application.backend.domain.order.OrderService;
 import com.kitm.application.backend.domain.restaurant.RestaurantService;
 import com.kitm.application.backend.domain.user.UserService;
@@ -44,6 +46,8 @@ public class DatabaseInitializer implements ApplicationListener<ApplicationReady
     private final UserService userService;
 
     private final RestaurantService restaurantService;
+
+    private final MenuService menuService;
 
     private final CategoryService categoryService;
 
@@ -80,6 +84,11 @@ public class DatabaseInitializer implements ApplicationListener<ApplicationReady
         restaurantService.createOne(UpsertRestaurantDto.builder()
                 .name("Donalds")
                 .description("Donalds restoranas.")
+                .build());
+
+        menuService.createOne(UpsertMenuDto.builder()
+                .name("Paprastas")
+                .description("Paprastas menu")
                 .build());
 
         final List<CategoryDto> categories = IntStream.range(1, 9)
