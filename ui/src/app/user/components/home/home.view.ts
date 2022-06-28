@@ -42,9 +42,9 @@ export class HomeView {
           name: restaurant.name,
           description: restaurant.description || 'No description',
           image: restaurant.image || '',
-          context: '',
+          context: [restaurant.name, restaurant.description].join(''),
           link: `/books/${restaurant.id}`,
-          ordered: false, // Boolean(restaurant.orderId),
+          ordered: false,
         };
       });
     }),

@@ -44,4 +44,30 @@
       <input type="hidden" name="id" th:value="${dto.id}"/>
     </fieldset>
   </form>
+
+  <script>
+    const blobToBase64 = (blob) => {
+      if (!blob) {
+        return Promise.reject();
+      }
+
+      return new Promise(resolve => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.readAsDataURL(blob);
+      });
+    };
+
+    const handleFileSelect = (event) => {
+      const [file] = event.target.files;
+
+      blobToBase64(file).then(base64 => {
+        document.getElementById('form-control-image').value = base64;
+        document.getElementById('image-preview').src = base64;
+      }).catch(() => {
+      });
+    };
+
+    document.getElementById('form-file-upload').addEventListener('change', handleFileSelect, false);
+  </script>
 </div>
