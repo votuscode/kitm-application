@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
-import { AuthorService } from '@api/api/author.service';
-import { BookService } from '@api/api/book.service';
-import { CategoryService } from '@api/api/category.service';
-import { BehaviorSubject, forkJoin } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { BookVm } from '~/app/shared/components/book-list/book-list.component';
-import { asMap } from '~/app/shared/util/as-map';
-import { changeDetection } from '~/change-detection.strategy';
+import {Component} from '@angular/core';
+import {AuthorService} from '@api/api/author.service';
+import {BookService} from '@api/api/book.service';
+import {CategoryService} from '@api/api/category.service';
+import {BehaviorSubject, forkJoin} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {BookVm} from '~/app/shared/components/book-list/book-list.component';
+import {asMap} from '~/app/shared/util/as-map';
+import {changeDetection} from '~/change-detection.strategy';
+import {RestaurantService} from "@api/api/restaurant.service";
+import {MenuService} from '@api/api/menu.service';
 
 @Component({
   template: `
@@ -28,18 +30,21 @@ export class HomeView {
     this.bookService.getBooks(),
     this.authorService.getAuthors(),
     this.categoryService.getCategories(),
+    this.restaurantService.getRestaurants(),
+    this.menuService.getMenus()
   ]).pipe(
-    map(([books, authors, categories]) => {
+    map(([books, authors, categories, restaurants, menus]) => {
       const authorMap = asMap(authors);
       const categoryMap = asMap(categories);
 
-      return books.map((book): BookVm => {
+      return restaurants.map((restaurant): BookVm => {
         return {
-          book,
-          author: authorMap[book.authorId],
-          category: categoryMap[book.categoryId],
-          link: `/books/${book.id}`,
-          ordered: Boolean(book.orderId),
+          name: restaurant.name,
+          description: restaurant.description || 'No description',
+          image: restaurant.image || '',
+          context: '',
+          link: `/books/${restaurant.id}`,
+          ordered: false, // Boolean(restaurant.orderId),
         };
       });
     }),
@@ -49,6 +54,8 @@ export class HomeView {
     readonly bookService: BookService,
     readonly authorService: AuthorService,
     readonly categoryService: CategoryService,
+    readonly restaurantService: RestaurantService,
+    readonly menuService: MenuService
   ) {
   }
 

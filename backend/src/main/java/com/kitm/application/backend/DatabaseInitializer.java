@@ -79,11 +79,13 @@ public class DatabaseInitializer implements ApplicationListener<ApplicationReady
         final RestaurantDto restaurantDto = restaurantService.createOne(UpsertRestaurantDto.builder()
                 .name("Stikliai")
                 .description("Stikliu restoranas.")
+                .image("https://www.stikliai.com/wp-content/uploads/2017/08/Stikliai-%C5%BEiemos-sodas-4-1024x684.jpg")
                 .build());
 
         restaurantService.createOne(UpsertRestaurantDto.builder()
                 .name("Donalds")
                 .description("Donalds restoranas.")
+                .image("https://media.istockphoto.com/photos/mac-donald-logo-at-times-square-midtown-at-night-picture-id967909524?k=20&m=967909524&s=612x612&w=0&h=VajhsMFqu1OQhsjN-XKjnp50pd4c4WHOhkCS8tdYdPM=")
                 .build());
 
         menuService.createOne(UpsertMenuDto.builder()

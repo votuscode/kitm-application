@@ -17,45 +17,45 @@ import { changeDetection } from '~/change-detection.strategy';
     <app-layout>
       <h2>Orders page</h2>
       <p>Here you can see your orders.</p>
-      <app-book-list [vms]="vm$ | async"></app-book-list>
+<!--      <app-book-list [vms]="vm$ | async"></app-book-list>-->
     </app-layout>
   `,
   changeDetection,
 })
 export class OrdersView {
 
-  readonly vm$ = forkJoin([
-    this.orderService.getOrders(),
-    this.authorService.getAuthors(),
-    this.categoryService.getCategories(),
-  ]).pipe(
-    switchMap(([orders, authors, categories]) => {
-      const authorMap = asMap(authors);
-      const categoryMap = asMap(categories);
-
-      if (orders.length === 0) {
-        return of([]);
-      }
-
-      return forkJoin(orders.map(order => this.bookService.getBook(order.bookId))).pipe(
-        map((books): BookVm[] => {
-          const bookMap = asMap(books);
-
-          return orders.map(order => {
-            const book = bookMap[order.bookId];
-
-            return {
-              book,
-              author: authorMap[book.authorId],
-              category: categoryMap[book.categoryId],
-              link: `/books/${order.bookId}`,
-              ordered: false,
-            };
-          });
-        }),
-      );
-    }),
-  );
+  // readonly vm$ = forkJoin([
+  //   this.orderService.getOrders(),
+  //   this.authorService.getAuthors(),
+  //   this.categoryService.getCategories(),
+  // ]).pipe(
+  //   switchMap(([orders, authors, categories]) => {
+  //     const authorMap = asMap(authors);
+  //     const categoryMap = asMap(categories);
+  //
+  //     if (orders.length === 0) {
+  //       return of([]);
+  //     }
+  //
+  //     return forkJoin(orders.map(order => this.bookService.getBook(order.bookId))).pipe(
+  //       map((books): BookVm[] => {
+  //         const bookMap = asMap(books);
+  //
+  //         return orders.map(order => {
+  //           const book = bookMap[order.bookId];
+  //
+  //           return {
+  //             book,
+  //             author: authorMap[book.authorId],
+  //             category: categoryMap[book.categoryId],
+  //             link: `/books/${order.bookId}`,
+  //             ordered: false,
+  //           };
+  //         });
+  //       }),
+  //     );
+  //   }),
+  // );
 
   constructor(
     readonly route: ActivatedRoute,

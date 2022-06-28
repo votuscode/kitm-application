@@ -19,4 +19,9 @@ public class RestaurantDto implements IGenericDto {
 
     @NotNull
     private String description;
+
+    private String image;
+
+    @NotNull
+    private Integer menus;
 }

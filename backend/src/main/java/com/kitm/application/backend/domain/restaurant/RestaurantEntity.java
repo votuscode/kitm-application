@@ -27,6 +27,10 @@ public class RestaurantEntity {
     @Column(nullable = false)
     private String description;
 
+    @Lob
+    @Column
+    private String image;
+
     @OneToMany(mappedBy = "restaurantEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<MenuEntity> menuEntitySet = new HashSet<>();
 }

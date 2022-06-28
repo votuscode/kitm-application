@@ -1,14 +1,12 @@
-import { Component, Input } from '@angular/core';
-import { AuthorDto } from '@api/model/authorDto';
-import { BookDto } from '@api/model/bookDto';
-import { CategoryDto } from '@api/model/categoryDto';
-import { AsyncData } from '~/app/shared/util/async-data';
-import { changeDetection } from '~/change-detection.strategy';
+import {Component, Input} from '@angular/core';
+import {AsyncData} from '~/app/shared/util/async-data';
+import {changeDetection} from '~/change-detection.strategy';
 
 export interface BookVm {
-  book: BookDto,
-  author: AuthorDto,
-  category: CategoryDto,
+  name: string;
+  description: string;
+  image: string;
+  context: string;
   link: string;
   ordered: boolean;
 }
@@ -42,11 +40,11 @@ const includes = (search: string) => (value: string) => value.toLowerCase().incl
       <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6" *ngFor="let vm of vms | appFilter:predicate(search)">
         <div class="card mt-3" [ngClass]="vm.ordered ? 'book-ordered' : ''">
           <a [routerLink]="vm.link">
-            <img class="card-img-top" [src]="vm.book.image" alt="Book">
+            <img class="card-img-top" [src]="vm.image" alt="Book">
           </a>
           <div class="card-body">
-            <h6 class="card-title">{{ vm.book.name }}</h6>
-            <p class="card-text">{{ vm.book.description }}</p>
+            <h6 class="card-title">{{ vm.name }}</h6>
+            <p class="card-text">{{ vm.description }}</p>
           </div>
         </div>
       </div>
@@ -60,8 +58,8 @@ export class BookListComponent {
 
   @Input() search: AsyncData<string>;
 
-  readonly predicate = (search: AsyncData<string>) => ({ book, author, category }: BookVm) => {
-    return search ? [book.name, author.name, category.name].some(includes(search)) : true;
+  readonly predicate = (search: AsyncData<string>) => ({context}: BookVm) => {
+    return search ? [context].some(includes(search)) : true;
   };
 
   get loading() {

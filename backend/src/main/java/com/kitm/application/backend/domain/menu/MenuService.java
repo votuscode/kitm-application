@@ -63,8 +63,13 @@ public class MenuService implements IMenuService {
         final MenuEntity menuEntity = menuRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Could not find menu"));
 
+        final RestaurantEntity restaurantEntity = restaurantRepository.findById(menuEntity.getRestaurantId())
+                .orElseThrow(() -> new EntityNotFoundException("Could not find restaurant"));
+
         menuEntity.setName(upsertMenuDto.getName());
         menuEntity.setDescription(upsertMenuDto.getDescription());
+
+        menuEntity.setRestaurantEntity(restaurantEntity);
 
         return convert(
                 menuRepository.save(menuEntity)

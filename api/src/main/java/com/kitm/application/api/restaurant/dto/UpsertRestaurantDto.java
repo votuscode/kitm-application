@@ -20,4 +20,7 @@ public class UpsertRestaurantDto {
     @NotNull
     @JsonProperty("description")
     private String description;
+
+    @JsonProperty("image")
+    private String image;
 }

@@ -23,8 +23,8 @@ public class SubmitRestaurantFormDto extends UpsertRestaurantDto implements ISub
     @JsonProperty("action")
     private Action action;
 
-    private SubmitRestaurantFormDto(final String name, final String description, final UUID id) {
-        super(name, description);
+    private SubmitRestaurantFormDto(final String name, final String description, final String image, final UUID id) {
+        super(name, description, image);
         this.id = id;
     }
 
@@ -33,6 +33,11 @@ public class SubmitRestaurantFormDto extends UpsertRestaurantDto implements ISub
     }
 
     public static SubmitRestaurantFormDto update(final RestaurantDto restaurantDto) {
-        return new SubmitRestaurantFormDto(restaurantDto.getName(), restaurantDto.getDescription(), restaurantDto.getId());
+        return new SubmitRestaurantFormDto(
+                restaurantDto.getName(),
+                restaurantDto.getDescription(),
+                restaurantDto.getImage(),
+                restaurantDto.getId()
+        );
     }
 }
