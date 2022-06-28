@@ -11,17 +11,17 @@ MySQL/MariaDb configuration:
 Connection string could be found in the `backend/src/main/resources/config` folder as `application.properties`
 
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/library
+spring.datasource.url=jdbc:mysql://localhost:3306/application
 ...
 ```
 
 Database and user configuration:
 
 ```sql
-DROP USER IF EXISTS 'library'@'%';
-DROP DATABASE IF EXISTS library;
-CREATE DATABASE library;
-GRANT ALL PRIVILEGES ON library.* TO 'library'@'%' IDENTIFIED BY '${KITM_DATASOURCE_PASSWORD}';
+DROP USER IF EXISTS 'application'@'%';
+DROP DATABASE IF EXISTS application;
+CREATE DATABASE application;
+GRANT ALL PRIVILEGES ON application.* TO 'application'@'%' IDENTIFIED BY '${KITM_DATASOURCE_PASSWORD}';
 FLUSH PRIVILEGES;
 ```
 
@@ -34,7 +34,7 @@ Database schema:
 Application secrets are located in the `backend/src/main/resources/config` folder as `application-secrets.properties`
 
 ```properties
-spring.datasource.username=library
+spring.datasource.username=application
 spring.datasource.password=
 
 spring.security.user.password=
