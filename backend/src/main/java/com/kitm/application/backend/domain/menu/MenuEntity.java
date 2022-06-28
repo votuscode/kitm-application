@@ -1,5 +1,6 @@
 package com.kitm.application.backend.domain.menu;
 
+import com.kitm.application.backend.domain.restaurant.RestaurantEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,4 +24,11 @@ public class MenuEntity {
 
     @Column(nullable = false)
     private String description;
+
+    @Column(name = "restaurant_id", nullable = false, insertable = false, updatable = false)
+    private UUID restaurantId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restaurant_id", nullable = false)
+    private RestaurantEntity restaurantEntity;
 }

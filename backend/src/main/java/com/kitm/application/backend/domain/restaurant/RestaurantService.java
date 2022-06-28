@@ -69,7 +69,7 @@ public class RestaurantService implements IRestaurantService {
         restaurantRepository.deleteById(id);
     }
 
-    private RestaurantDto convert(final RestaurantEntity restaurantEntity) {
+    public RestaurantDto convert(final RestaurantEntity restaurantEntity) {
 
         return RestaurantDto.builder()
                 .id(restaurantEntity.getId())

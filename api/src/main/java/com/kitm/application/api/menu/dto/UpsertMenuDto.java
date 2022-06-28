@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
+import java.util.UUID;
 
 @Data
 @Builder
@@ -20,4 +21,8 @@ public class UpsertMenuDto {
     @NotNull
     @JsonProperty("description")
     private String description;
+
+    @NotNull
+    @JsonProperty("restaurantId")
+    private UUID restaurantId;
 }

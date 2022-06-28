@@ -76,7 +76,7 @@ public class DatabaseInitializer implements ApplicationListener<ApplicationReady
 
     private void createGeneric() {
 
-        restaurantService.createOne(UpsertRestaurantDto.builder()
+        final RestaurantDto restaurantDto = restaurantService.createOne(UpsertRestaurantDto.builder()
                 .name("Stikliai")
                 .description("Stikliu restoranas.")
                 .build());
@@ -89,6 +89,7 @@ public class DatabaseInitializer implements ApplicationListener<ApplicationReady
         menuService.createOne(UpsertMenuDto.builder()
                 .name("Paprastas")
                 .description("Paprastas menu")
+                .restaurantId(restaurantDto.getId())
                 .build());
 
         final List<CategoryDto> categories = IntStream.range(1, 9)

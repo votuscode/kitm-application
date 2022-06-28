@@ -1,5 +1,6 @@
 package com.kitm.application.api.restaurant.dto;
 
+import com.kitm.application.api.common.IGenericDto;
 import lombok.Builder;
 import lombok.Data;
 
@@ -8,7 +9,7 @@ import java.util.UUID;
 
 @Data
 @Builder
-public class RestaurantDto {
+public class RestaurantDto implements IGenericDto {
 
     @NotNull
     private UUID id;

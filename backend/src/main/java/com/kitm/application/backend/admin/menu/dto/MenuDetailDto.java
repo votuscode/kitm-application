@@ -1,5 +1,6 @@
-package com.kitm.application.api.menu.dto;
+package com.kitm.application.backend.admin.menu.dto;
 
+import com.kitm.application.api.restaurant.dto.RestaurantDto;
 import lombok.Builder;
 import lombok.Data;
 
@@ -8,8 +9,7 @@ import java.util.UUID;
 
 @Data
 @Builder
-public class MenuDto {
-
+public class MenuDetailDto {
     @NotNull
     private UUID id;
 
@@ -20,5 +20,5 @@ public class MenuDto {
     private String description;
 
     @NotNull
-    private UUID restaurantId;
+    private RestaurantDto restaurant;
 }

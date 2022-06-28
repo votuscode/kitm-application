@@ -23,8 +23,8 @@ public class SubmitMenuFormDto extends UpsertMenuDto implements ISubmitFormDto {
     @JsonProperty("action")
     private Action action;
 
-    private SubmitMenuFormDto(final String name, final String description, final UUID id) {
-        super(name, description);
+    private SubmitMenuFormDto(final String name, final String description, final UUID restaurantId, final UUID id) {
+        super(name, description, restaurantId);
         this.id = id;
     }
 
@@ -33,6 +33,6 @@ public class SubmitMenuFormDto extends UpsertMenuDto implements ISubmitFormDto {
     }
 
     public static SubmitMenuFormDto update(final MenuDto menuDto) {
-        return new SubmitMenuFormDto(menuDto.getName(), menuDto.getDescription(), menuDto.getId());
+        return new SubmitMenuFormDto(menuDto.getName(), menuDto.getDescription(), menuDto.getRestaurantId(), menuDto.getId());
     }
 }

@@ -1,8 +1,11 @@
 package com.kitm.application.backend.domain.restaurant;
 
+import com.kitm.application.backend.domain.menu.MenuEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -23,4 +26,7 @@ public class RestaurantEntity {
 
     @Column(nullable = false)
     private String description;
+
+    @OneToMany(mappedBy = "restaurantEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private Set<MenuEntity> menuEntitySet = new HashSet<>();
 }

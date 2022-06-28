@@ -3,6 +3,8 @@ package com.kitm.application.backend.domain.menu;
 import com.kitm.application.api.menu.IMenuService;
 import com.kitm.application.api.menu.dto.MenuDto;
 import com.kitm.application.api.menu.dto.UpsertMenuDto;
+import com.kitm.application.backend.domain.restaurant.RestaurantEntity;
+import com.kitm.application.backend.domain.restaurant.RestaurantRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,8 @@ import java.util.UUID;
 public class MenuService implements IMenuService {
 
     private final MenuRepository menuRepository;
+
+    private final RestaurantRepository restaurantRepository;
 
     @Override
     public Collection<MenuDto> findAll() {
@@ -39,9 +43,13 @@ public class MenuService implements IMenuService {
     @Override
     public MenuDto createOne(final UpsertMenuDto upsertMenuDto) {
 
+        final RestaurantEntity restaurantEntity = restaurantRepository.findById(upsertMenuDto.getRestaurantId())
+                .orElseThrow(() -> new EntityNotFoundException("Could not find restaurant"));
+
         final MenuEntity menuEntity = MenuEntity.builder()
                 .name(upsertMenuDto.getName())
                 .description(upsertMenuDto.getDescription())
+                .restaurantEntity(restaurantEntity)
                 .build();
 
         return convert(
