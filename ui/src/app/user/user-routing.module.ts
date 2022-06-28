@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '', children: [
       {path: '', component: HomeView, data: {title: 'Restaurants'}},
-      {path: 'restaurant/:menuId', component: RestaurantView, data: {title: 'Check menu'}},
+      {path: 'restaurant/:restaurantId', component: RestaurantView, data: {title: 'Check menu'}},
     ],
     canActivate: [AuthenticationGuard],
   },

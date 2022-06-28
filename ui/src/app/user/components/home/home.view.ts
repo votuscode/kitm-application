@@ -10,7 +10,7 @@ const GENERIC_RESTAURANT = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2
 
 @Component({
   template: `
-    <app-layout>
+    <app-layout title="Restaurants">
       <div widget>
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                (input)="search(searchInput.value)" #searchInput>

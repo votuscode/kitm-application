@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { AuthenticationFacade } from '~/app/core/security/authentication.facade';
-import { changeDetection } from '~/change-detection.strategy';
+import {Component, Input} from '@angular/core';
+import {AuthenticationFacade} from '~/app/core/security/authentication.facade';
+import {changeDetection} from '~/change-detection.strategy';
 import {ActivatedRoute} from "@angular/router";
+import {AsyncData} from "~/app/shared/util/async-data";
 
 @Component({
   selector: 'app-layout',
@@ -65,10 +66,8 @@ import {ActivatedRoute} from "@angular/router";
 export class LayoutComponent {
   home = '/';
 
-  title: string;
+  @Input() title: AsyncData<string>;
 
   constructor(readonly authenticationFacade: AuthenticationFacade, readonly activatedRoute: ActivatedRoute) {
-    const title = activatedRoute.snapshot?.data?.title;
-    this.title = title;
   }
 }
