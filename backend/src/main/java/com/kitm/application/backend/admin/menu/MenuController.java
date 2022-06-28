@@ -41,6 +41,7 @@ public class MenuController {
                         .map(menu -> ItemList.Item.builder()
                                 .name(menu.getName())
                                 .description(menu.getDescription())
+                                .image(menu.getImage())
                                 .info(String.format("Restaurant: %s", menu.getRestaurant().getName()))
                                 .href("/admin/menus/" + menu.getId())
                                 .build())

@@ -49,6 +49,7 @@ public class MenuService implements IMenuService {
         final MenuEntity menuEntity = MenuEntity.builder()
                 .name(upsertMenuDto.getName())
                 .description(upsertMenuDto.getDescription())
+                .image(upsertMenuDto.getImage())
                 .restaurantEntity(restaurantEntity)
                 .build();
 
@@ -68,6 +69,7 @@ public class MenuService implements IMenuService {
 
         menuEntity.setName(upsertMenuDto.getName());
         menuEntity.setDescription(upsertMenuDto.getDescription());
+        menuEntity.setImage(upsertMenuDto.getImage());
 
         menuEntity.setRestaurantEntity(restaurantEntity);
 
@@ -88,6 +90,7 @@ public class MenuService implements IMenuService {
                 .id(menuEntity.getId())
                 .name(menuEntity.getName())
                 .description(menuEntity.getDescription())
+                .image(menuEntity.getImage())
                 .build();
     }
 }

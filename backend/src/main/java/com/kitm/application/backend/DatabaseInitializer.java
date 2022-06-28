@@ -58,7 +58,7 @@ public class DatabaseInitializer implements ApplicationListener<ApplicationReady
         final RestaurantDto firstRestaurant = restaurantService.createOne(UpsertRestaurantDto.builder()
                 .name("Stikliai")
                 .description("Stikliu restoranas.")
-                .image("https://www.stikliai.com/wp-content/uploads/2017/08/Stikliai-%C5%BEiemos-sodas-4-1024x684.jpg")
+                .image("https://upload.wikimedia.org/wikipedia/commons/2/2b/Inside_Stikliai_hotel.jpg")
                 .build());
 
         final RestaurantDto secondRestaurant = restaurantService.createOne(UpsertRestaurantDto.builder()
@@ -70,12 +70,14 @@ public class DatabaseInitializer implements ApplicationListener<ApplicationReady
         menuService.createOne(UpsertMenuDto.builder()
                 .name("Paprastas")
                 .description("Paprastas menu")
+                .image("https://assets.vogue.in/photos/61b3753015fc923d29d9b585/2:3/w_2560%2Cc_limit/Silly-Food-Image-4-819x1024.jpeg")
                 .restaurantId(firstRestaurant.getId())
                 .build());
 
         menuService.createOne(UpsertMenuDto.builder()
                 .name("Paprastas mac")
                 .description("Paprastas mac menu")
+                .image("https://upload.wikimedia.org/wikipedia/en/3/32/Generic_Fastfood.jpg")
                 .restaurantId(secondRestaurant.getId())
                 .build());
 

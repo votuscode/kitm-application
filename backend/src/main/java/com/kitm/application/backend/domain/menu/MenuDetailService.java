@@ -28,6 +28,7 @@ public class MenuDetailService {
                 .id(menuEntity.getId())
                 .name(menuEntity.getName())
                 .description(menuEntity.getDescription())
+                .image(menuEntity.getImage())
                 .restaurant(restaurantService.convert(menuEntity.getRestaurantEntity()))
                 .build();
     }

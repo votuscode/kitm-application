@@ -19,6 +19,8 @@ public class MenuDetailDto {
     @NotNull
     private String description;
 
+    private String image;
+
     @NotNull
     private RestaurantDto restaurant;
 }

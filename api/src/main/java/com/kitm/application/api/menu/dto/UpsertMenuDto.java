@@ -22,6 +22,9 @@ public class UpsertMenuDto {
     @JsonProperty("description")
     private String description;
 
+    @JsonProperty("image")
+    private String image;
+
     @NotNull
     @JsonProperty("restaurantId")
     private UUID restaurantId;

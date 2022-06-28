@@ -25,6 +25,10 @@ public class MenuEntity {
     @Column(nullable = false)
     private String description;
 
+    @Lob
+    @Column
+    private String image;
+
     @Column(name = "restaurant_id", nullable = false, insertable = false, updatable = false)
     private UUID restaurantId;
 
